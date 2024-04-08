@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, SafeAreaView, StyleSheet, Text, View, Modal } from 'react-native';
+import Entry from './components/Entry';
 
 export default function App() {
 
-  const [modalVisible, setModalVisible] = useState(false);
 
-  const closeModal = () => {
-    setModalVisible(false);
-  }
 
   const handlePress = () => {
     console.log('Text Pressed');
@@ -18,26 +15,10 @@ export default function App() {
 
     <View style={styles.container}>
 
-      <Modal style={styles.modal} visible={modalVisible}>
-        <SafeAreaView style={{ backgroundColor: 'black' }}>
-          <Text >Modal</Text>
-          <Button title="Close" onPress={closeModal} />
-        </SafeAreaView>
-      </Modal>
+      <Entry />
 
 
 
-      <View onPress={handlePress} style={styles.time1}>
-        <Text style={styles.text1}>4:00</Text>
-        {/* <Text style={styles.text1}>Hello this is my first native project.</Text> */}
-        <StatusBar style="auto" />
-      </View>
-
-      <View onPress={handlePress} style={styles.time2}>
-        <Text style={styles.text2}>4:00</Text>
-        {/* <Text style={styles.text1}>Hello this is my first native project.</Text> */}
-        <StatusBar style="auto" />
-      </View>
     </View>
 
   );
