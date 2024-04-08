@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button, SafeAreaView, StyleSheet, Text, View, Modal } from 'react-native';
-
-
+import Clock from './Clock';
 
 const Entry = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [showClock, setShowClock] = useState(false);
 
     const closeModal = () => {
         setModalVisible(false);
+        setShowClock(true);
     }
 
     return (
@@ -15,16 +16,17 @@ const Entry = () => {
             <Modal
                 visible={modalVisible}
                 animationType="slide"
-                onRequestClose={closeModal}
+                onRequestClose={() => setModalVisible(false)}
             >
                 <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
                     <View style={styles.modal}>
-                        <Text style={styles.modalText}>Modal</Text>
+                        <Text style={styles.modalText}>Some Time</Text>
                         <Button title="Start" onPress={closeModal} />
                     </View>
                 </SafeAreaView>
             </Modal>
             <Button title="Set Time" onPress={() => setModalVisible(true)} />
+            {showClock && <Clock />}
         </View>
     );
 };
